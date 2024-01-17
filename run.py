@@ -12,7 +12,7 @@ board = [[0,0,0,0,0],
 def display_board():
     label = list('abcdefghijklmnopqrstuvwxyz')
     for i in range (len(board)):
-        print(label[i], end = '')  #Not printing letters
+        print(label[i], end = '')
     for row in range (0,5):
         for col in range (0,5):
             print(board + label[row][col], end = " ")
@@ -65,6 +65,7 @@ If you have hit a mine, your marker will display a *, if not your marker will di
             return col_str
         else:
             print("The value is not a string or is not exactly 1 letter long. Please try again.")
+            break            
     
     def input_row():
         """ User enter row value"""
@@ -87,6 +88,10 @@ If you have hit a mine, your marker will display a *, if not your marker will di
         
               
 def display_board():
+    label = list('abcdefghijklmnopqrstuvwxyz')
+    for i in range (len(board)):
+        print(label[i], end = " ")  #Not printing letters
+        print('\n')
     for row in range (0,5):
         for col in range (0,5):
             if col ==4:
