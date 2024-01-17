@@ -68,32 +68,24 @@ If you have hit a mine, your marker will display a *, if not your marker will di
     
     def input_row():
         """ User enter row value"""
-        while True: 
-            print(f"""
+    while True: 
+        print(f"""
             Next, choose which row you wish to place your mark.
             Count down the grid and input that number. 
             Input must be a single number ONLY. 
             """)
-            row_int = input("Enter number for desired row postion:")
+        row_int = input("Enter number for desired row postion:")
 
-        if validate_row():
-            print("Row value is valid")
-        return row_int
+        if isinstance(row_int, int) and len(row_int) == 1:
+            print("Value accepted")
+            return row_int
+        else:
+            print("The value is not a number or is not exactly 1 letter long. Please try again.")
 
-
-def validate_row():
-    """
-    Validates if the user has input either an int
-    for the row input. Validates Length.
-    """
-    value = input("Enter a value: ")
-    if isinstance(value, int) and len(value) == 1:
-        print("Value accepted")
-    else:
-        print("The value is not a number or is not exactly 1 letter long. Please try again.")
-                
-
-
+    col = input_col()
+    row = input_row()
+        
+              
 def display_board():
     for row in range (0,5):
         for col in range (0,5):
@@ -104,30 +96,7 @@ def display_board():
     print('\n')
 
 display_board()
-        
 
-def validate_row():
-    """
-    Validates if the user has input either an int
-    for the row input. Validates Length.
-    """
-    value = input("Enter a value: ")
-    if isinstance(value, int) and len(value) == 1:
-        print("Value accepted")
-    else:
-        print("The value is not a number or is not exactly 1 letter long. Please try again.")
-                
-        
-#def validate_column():
-  #  """
-   # Validates if the user has input either a str 
-     #for the column input. Validates Length.
-    #"""
-    #value = input("Enter a value: ")
-    #if isinstance(value, str) and len(value) == 1:
-     #   print("The value is a string and is exactly 1 letter long.")
-    #else:
-       #  print("The value is not a string or is not exactly 1 letter long. Please try again.")
-    
+
 main()
         
