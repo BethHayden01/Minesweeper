@@ -1,4 +1,30 @@
-import string
+import random
+
+board = [0,0,0,0,0], 
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0]
+
+
+mines = int(input("Enter the number of mines you desire"))
+if mines > 25:
+    print("Too many mines. Set to 5")
+    mines=5
+num=0
+while num < mines:
+    row=random.randint(0,4)
+    col=random.randint(0,4)
+    if board[row][column]==0:
+        board[row][column]=1
+        num=num+1
+
+def display_board():
+    for row in range (0,5):
+        for col in range (0,5):
+            print(board[row][col], end = " ")
+
+display_board()
 
 
 
