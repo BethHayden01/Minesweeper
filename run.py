@@ -10,9 +10,12 @@ board = [[0,0,0,0,0],
 
 
 def display_board():
+    label = list('abcdefghijklmnopqrstuvwxyz')
+    for i in range (len(board)):
+        print(label[i], end = '')  #Not printing letters
     for row in range (0,5):
         for col in range (0,5):
-            print(board[row][col], end = " ")
+            print(board + label[row][col], end = " ")
 
 
 def main():
@@ -48,8 +51,37 @@ If you have hit a mine, your marker will display a *, if not your marker will di
     except ValueError:
         print("Use ONLY one number from 1 - 10")
 
+    def input_col():
+        """ User enter column value"""
+    while True: 
+        print(f"""
+        Choose which column to place your mark. 
+        Input must be a single letter ONLY.
+        """)
 
-def validate_row(values):
+        col_str = input ("Enter letter for desired column position:")
+        if isinstance(col_str, str) and len(col_str) == 1:
+            print("Input Valid")
+            return col_str
+        else:
+            print("The value is not a string or is not exactly 1 letter long. Please try again.")
+    
+    def input_row():
+        """ User enter row value"""
+        while True: 
+            print(f"""
+            Next, choose which row you wish to place your mark.
+            Count down the grid and input that number. 
+            Input must be a single number ONLY. 
+            """)
+            row_int = input("Enter number for desired row postion:")
+
+        if validate_row():
+            print("Row value is valid")
+        return row_int
+
+
+def validate_row():
     """
     Validates if the user has input either an int
     for the row input. Validates Length.
@@ -74,7 +106,7 @@ def display_board():
 display_board()
         
 
-def validate_row(values):
+def validate_row():
     """
     Validates if the user has input either an int
     for the row input. Validates Length.
@@ -86,18 +118,16 @@ def validate_row(values):
         print("The value is not a number or is not exactly 1 letter long. Please try again.")
                 
         
-def validate_column(values):
-    """
-    Validates if the user has input either a str 
-    for the column input. Validates Length.
-    """
-    value = input("Enter a value: ")
-    if isinstance(value, str) and len(value) == 1:
-        print("The value is a string and is exactly 1 letter long.")
-    else:
-        print("The value is not a string or is not exactly 1 letter long. Please try again.")
-
-
-
+#def validate_column():
+  #  """
+   # Validates if the user has input either a str 
+     #for the column input. Validates Length.
+    #"""
+    #value = input("Enter a value: ")
+    #if isinstance(value, str) and len(value) == 1:
+     #   print("The value is a string and is exactly 1 letter long.")
+    #else:
+       #  print("The value is not a string or is not exactly 1 letter long. Please try again.")
+    
 main()
         
