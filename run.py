@@ -2,22 +2,6 @@ import random
 import os
 
 
-board = [[0,0,0,0,0], 
-        [0,0,0,0,0],
-        [0,0,0,0,0],
-        [0,0,0,0,0],
-        [0,0,0,0,0]]
-
-
-def display_board():
-    label = list('abcdefghijklmnopqrstuvwxyz')
-    for i in range (len(board)):
-        print(label[i], end = '')
-    for row in range (0,5):
-        for col in range (0,5):
-            print(board + label[row][col], end = " ")
-
-
 def main():
     """ Welcome message displayed to the user """ 
     print(f"""
@@ -31,6 +15,22 @@ your marker
 
 If you have hit a mine, your marker will display a *, if not your marker will display an X
     """)
+    #Board that the user should not see 
+    board = [[0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0],
+        [0,0,0,0,0]]
+
+
+    #Board that the user should see 
+    user_board = [[-1,-1,-1,-1,-1], 
+        [-1,-1,-1,-1,-1],
+        [-1,-1,-1,-1,-1],
+        [-1,-1,-1,-1,-1],
+        [-1,-1,-1,-1,-1]]
+
+
     # while mines is not int or len(mines) > 10 or len(mines) < 1 please repeat input
     mines = input("Enter the number of mines you desire: ")
     if len(mines) > 10 and len(mines) < 1:
@@ -38,17 +38,37 @@ If you have hit a mine, your marker will display a *, if not your marker will di
     try :
         mines = int(mines)
         num=0
-        print("test1")
         while num < mines:
-            print("test2")
             row=random.randint(0,4)
             col=random.randint(0,4)
             if board[row][col]==0:
                 board[row][col]=1
                 num=num+1
-        display_board()
     except ValueError:
         print("Use ONLY one number from 1 - 10")
+
+    def display_board():
+        for row in range (0,5):
+            for col in range (0,5):
+                if col ==4:
+                    print(board[row][col])
+                else:
+                    print(board[row][col], end = " ")
+        print('\n')
+
+
+    def display_user_board():
+        print ("-"*21)
+        for row in range (0,5):
+            print ("| ", end = "")
+            for col in range (0,5):
+                if user_board[row][col] == -1:
+                    print(" ",  end = " | ")
+                else:
+                    print(user_board[row][col], end = " | ")
+            print("")
+            print("-"*21)
+    display_user_board()
 
 
     def input_col():
@@ -82,35 +102,22 @@ If you have hit a mine, your marker will display a *, if not your marker will di
             return row_int
         else:
             print("The value is not a number or is not exactly 1 letter long. Please try again.")
+    
+    def user_placement(): 
+        if [input_col] [input_row] != 1:
+            print("X")
+        else:
+            print("*")
+    
 
 
     col = input_col()
     row = input_row()
-        
-              
-def display_board():
-    label = list('abcdefghijklmnopqrstuvwxyz')
-    for i in range (len(board)):
-        print(label[i], end = " ")  #Not printing letters
-    for row in range (0,5):
-        for col in range (0,5):
-            if col ==4:
-                print(board[row][col])
-            else:
-                print(board[row][col], end = " ")
-    print('\n')
-
-display_board()
 
 
 main()
 
-# Notes:
-#while space is not mine:
- #   print ('X')
-#else:
- #   print('*')
-
+#Notes:
 #while not all spaces have been filled:
  #   continue game
     
