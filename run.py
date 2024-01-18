@@ -36,7 +36,6 @@ If you have hit a mine, your marker will display a *, if not your marker will di
     if len(mines) > 10 and len(mines) < 1:
         print("Use one number from 1 - 10")
     try :
-
         mines = int(mines)
         num=0
         print("test1")
@@ -51,6 +50,7 @@ If you have hit a mine, your marker will display a *, if not your marker will di
     except ValueError:
         print("Use ONLY one number from 1 - 10")
 
+
     def input_col():
         """ User enter column value"""
     while True: 
@@ -64,8 +64,8 @@ If you have hit a mine, your marker will display a *, if not your marker will di
             print("Input Valid")
             return col_str
         else:
-            print("The value is not a string or is not exactly 1 letter long. Please try again.")
-            break            
+            print("The value is not a string or is not exactly 1 letter long. Please try again.")      
+
     
     def input_row():
         """ User enter row value"""
@@ -83,6 +83,7 @@ If you have hit a mine, your marker will display a *, if not your marker will di
         else:
             print("The value is not a number or is not exactly 1 letter long. Please try again.")
 
+
     col = input_col()
     row = input_row()
         
@@ -91,7 +92,6 @@ def display_board():
     label = list('abcdefghijklmnopqrstuvwxyz')
     for i in range (len(board)):
         print(label[i], end = " ")  #Not printing letters
-        print('\n')
     for row in range (0,5):
         for col in range (0,5):
             if col ==4:
@@ -104,4 +104,22 @@ display_board()
 
 
 main()
+
+# Notes:
+#while space is not mine:
+ #   print ('X')
+#else:
+ #   print('*')
+
+#while not all spaces have been filled:
+ #   continue game
+    
+  #  if mines == * :
+   #     ('GAME OVER')
+#else:
+ #   print ('GAME OVER')
+  #  end game & close terminal
+   # with a sleep so close is not instant
+
+
         
