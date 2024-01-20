@@ -69,6 +69,7 @@ If you have hit a mine, your marker will display a , if not your marker will dis
             print("")
             print("-"*21)
     display_user_board()
+    num_mines_hit = 0
 
 
     def input_col():
@@ -106,10 +107,11 @@ If you have hit a mine, your marker will display a , if not your marker will dis
 
 
     def user_placement(): 
-        if [input_col] [input_row] != 1:
-            print("X")
+        if [input_col()][input_row()] == 1:
+            user_board[input_col()][input_row()] = '*'
+            num_mines_hit += 1
         else:
-            print("*")
+            user_board[input_col()][input_row()] = 'X'
 
     
     while num_mines_hit < mines:
