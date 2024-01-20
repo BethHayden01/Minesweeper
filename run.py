@@ -104,18 +104,36 @@ If you have hit a mine, your marker will display a , if not your marker will dis
               print(len(row_int))
               print("The value is not a number or is not exactly 1 letter long. Please try again.")
 
+
     def user_placement(): 
         if [input_col] [input_row] != 1:
             print("X")
         else:
-            print("")
+            print("*")
+
+    
+    while num_mines_hit < mines:
+        user_board = [[-1, -1, -1, -1, -1],
+                  [-1, -1, -1, -1, -1],
+                  [-1, -1, -1, -1, -1],
+                  [-1, -1, -1, -1, -1],
+                  [-1, -1, -1, -1, -1]]
+
+        display_user_board()
+        
+        col = input_col()
+        row = input_row()
+
+        if board[row][col] == 1:
+            user_board[row][col] = 'M'
+            num_mines_hit += 1
+        else: 
+            user_board[row][col] = 'X'
+        
+        display_user_board()
+print("GAME OVER! You have hit all the mines!")
 
 
-
-    col = input_col()
-    row = input_row()
-
-    print(col,row)
 main()
 
 #Notes:
