@@ -83,3 +83,7 @@ solved bugs:
 (Screenshot of broken code)
 This was fixed by the addition of a break after the column input while loop.
 (Screenshot)
+
+2. The code used to detect if a mine had been hit only responded to integer inputs and therefore produced the following error message. 
+(Screenshot)
+This was fixed by altering the structure of my column input to request an integar rather than a string. 
