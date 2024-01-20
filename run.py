@@ -9,11 +9,11 @@ Welcome to Minesweeper! Hit enter to start
 
 Instructions:
 
-1. When prompted, enter a single letter to determine which row to place
+When prompted, enter a single letter to determine which row to place
 your marker
-2. When prompted, enter a single number to determine which column to place your marker
+When prompted, enter a single number to determine which column to place your marker
 
-If you have hit a mine, your marker will display a *, if not your marker will display an X
+If you have hit a mine, your marker will display a , if not your marker will display an X
     """)
     #Board that the user should not see 
     board = [[0,0,0,0,0],
@@ -73,60 +73,58 @@ If you have hit a mine, your marker will display a *, if not your marker will di
 
     def input_col():
         """ User enter column value"""
-    while True: 
-        print(f"""
-        Choose which column to place your mark. 
-        Input must be a single letter ONLY.
-        """)
+        while True: 
+            print(f"""
+            Choose which column to place your mark. 
+            Input must be a single letter ONLY.
+            """)
+            col_str = input ("Enter letter for desired column position:")
+            if isinstance(col_str, str) and len(col_str) == 1:
+                print("Input Valid")
+                return col_str
+            else:
+              print("The value is not a string or is not exactly 1 letter long. Please try again.")
 
-        col_str = input ("Enter letter for desired column position:")
-        if isinstance(col_str, str) and len(col_str) == 1:
-            print("Input Valid")
-            return col_str
-        else:
-            print("The value is not a string or is not exactly 1 letter long. Please try again.")      
 
-    
+
     def input_row():
         """ User enter row value"""
-    while True: 
-        print(f"""
-            Next, choose which row you wish to place your mark.
-            Count down the grid and input that number. 
-            Input must be a single number ONLY. 
-            """)
-        row_int = input("Enter number for desired row postion:")
+        while True: 
+            print(f"""
+                Next, choose which row you wish to place your mark.
+                Count down the grid and input that number. 
+                Input must be a single number ONLY. 
+                """)
+            row_int = input("Enter number for desired row postion:")
 
-        if isinstance(row_int, int) and len(row_int) == 1:
-            print("Value accepted")
-            return row_int
-        else:
-            print("The value is not a number or is not exactly 1 letter long. Please try again.")
-    
+            if isinstance(row_int, str) and len(row_int) == 1:
+                print("Value accepted")
+                return int(row_int)
+            else:
+              print(len(row_int))
+              print("The value is not a number or is not exactly 1 letter long. Please try again.")
+
     def user_placement(): 
         if [input_col] [input_row] != 1:
             print("X")
         else:
-            print("*")
-    
+            print("")
+
 
 
     col = input_col()
     row = input_row()
 
-
+    print(col,row)
 main()
 
 #Notes:
 #while not all spaces have been filled:
  #   continue game
-    
+
   #  if mines == * :
    #     ('GAME OVER')
 #else:
  #   print ('GAME OVER')
   #  end game & close terminal
    # with a sleep so close is not instant
-
-
-        
