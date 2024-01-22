@@ -107,12 +107,18 @@ If you have hit a mine, your marker will display a , if not your marker will dis
 
 
     def user_placement(): 
-        if [input_col()][input_row()] == 1:
-            user_board[input_col()][input_row()] = '*'
+        col = input_col()
+        row = input_row()
+        if user_board[row][col] == 'X' or user_board[row][col] == '*':
+            print("You have already hit this space, try again.")
+        elif user_board[row][col] == 1:
+            user_board[row][col] = 'M'
+            print ("You have hit a mine!")
             num_mines_hit += 1
         else:
-            user_board[input_col()][input_row()] = 'X'
-
+            user_board[row][col] == 'X'
+            print("You did not hit a mine! Congratulations")
+            
     
     while num_mines_hit < mines:
         user_board = [[-1, -1, -1, -1, -1],
@@ -135,8 +141,7 @@ If you have hit a mine, your marker will display a , if not your marker will dis
             print("You did not hit a mine! Congratulations")
         
         display_user_board()
-print("GAME OVER! You have hit all the mines!")
-
+        
 
 main()
 
