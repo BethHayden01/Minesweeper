@@ -77,12 +77,12 @@ If you have hit a mine, your marker will display a , if not your marker will dis
         while True: 
             print(f"""
             Choose which column to place your mark. 
-            Input must be a single letter ONLY.
+            Input must be a single number ONLY.
             """)
-            col_str = input ("Enter letter for desired column position:")
+            col_str = input ("Enter number for desired column position:")
             if isinstance(col_str, str) and len(col_str) == 1:
                 print("Input Valid")
-                return col_str
+                return int(col_str)
             else:
               print("The value is not a string or is not exactly 1 letter long. Please try again.")
 
@@ -123,14 +123,16 @@ If you have hit a mine, your marker will display a , if not your marker will dis
 
         display_user_board()
         
-        col = input_col()
-        row = input_row()
+        col = int(input_col())
+        row = int(input_row())
 
         if board[row][col] == 1:
             user_board[row][col] = 'M'
+            print ("You have hit a mine!")
             num_mines_hit += 1
         else: 
             user_board[row][col] = 'X'
+            print("You did not hit a mine! Congratulations")
         
         display_user_board()
 print("GAME OVER! You have hit all the mines!")
