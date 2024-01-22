@@ -119,6 +119,8 @@ If you have hit a mine, your marker will display a , if not your marker will dis
             user_board[row][col] == 'X'
             print("You did not hit a mine! Congratulations")
             
+            user_placement()
+            
     
     while num_mines_hit < mines:
         user_board = [[-1, -1, -1, -1, -1],
