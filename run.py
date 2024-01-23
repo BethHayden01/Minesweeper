@@ -151,7 +151,7 @@ If you have hit a mine, your marker will display a , if not your marker will dis
         
     # ends the game if the user has guessed all spaces and not hit a mine.
     def game_win():
-        if user_placement + mines == 25:
+        if user_placement == 25 - mines:
             print("You have completed the game without hitting all the mines. You Win! Congratulations")
             return True
         else:
