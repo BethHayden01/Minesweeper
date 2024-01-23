@@ -80,12 +80,11 @@ If you have hit a mine, your marker will display a , if not your marker will dis
             Input must be a single number ONLY.
             """)
             col_str = input ("Enter number for desired column position:")
-            if isinstance(col_str, str) and len(col_str) == 1:
+            if (col_str, str) and len(col_str) == 1:
                 print("Input Valid")
                 return int(col_str)
             else:
-              print("The value is not a string or is not exactly 1 letter long. Please try again.")
-
+              print("The value is not a number or is not exactly 1 number long. Please try again.")
 
 
     def input_row():
@@ -105,21 +104,19 @@ If you have hit a mine, your marker will display a , if not your marker will dis
               print(len(row_int))
               print("The value is not a number or is not exactly 1 letter long. Please try again.")
 
-
+    #places user guess and checks if the user has already guessed the cell 
     def user_placement(): 
         col = input_col()
         row = input_row()
-        if user_board[row][col] == 'X' or user_board[row][col] == '*':
-            print("You have already hit this space, try again.")
-        elif user_board[row][col] == 1:
+        if user_board[row][col] == 'X' or user_board[row][col] == 'M':
+            print("You have already hit this space, try again.") 
+        elif board[row][col] == 1:
             user_board[row][col] = 'M'
             print ("You have hit a mine!")
             num_mines_hit += 1
         else:
-            user_board[row][col] == 'X'
+            user_board[row][col] = 'X'
             print("You did not hit a mine! Congratulations")
-            
-            user_placement()
             
     
     while num_mines_hit < mines:
@@ -136,24 +133,33 @@ If you have hit a mine, your marker will display a , if not your marker will dis
 
         if board[row][col] == 1:
             user_board[row][col] = 'M'
-            print ("You have hit a mine!")
+            print ("You have hit a mine!2")
             num_mines_hit += 1
         else: 
             user_board[row][col] = 'X'
             print("You did not hit a mine! Congratulations")
         
-        display_user_board()
+        display_user_board()        
+        
+    # ends game if user has hit all mines
+    def game_over():
+        if num_mines_hit == mines: 
+            print("GAME OVER! You have hit all the mines")
+            return True
+        else:
+            return False
+        
+    # ends the game if the user has guessed all spaces and not hit a mine.
+    def game_win():
+        if user_placement + mines == 25:
+            print("You have completed the game without hitting all the mines. You Win! Congratulations")
+            return True
+        else:
+            return False
+        
+    user_placement()
+    game_over()
+    game_win()
         
 
 main()
-
-#Notes:
-#while not all spaces have been filled:
- #   continue game
-
-  #  if mines == * :
-   #     ('GAME OVER')
-#else:
- #   print ('GAME OVER')
-  #  end game & close terminal
-   # with a sleep so close is not instant
