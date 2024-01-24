@@ -9,11 +9,15 @@ Welcome to Minesweeper! Hit enter to start
 
 Instructions:
 
-When prompted, enter a single letter to determine which row to place
-your marker
+When prompted, enter a single number to determine which row to place
+your marker.
+
+
 When prompted, enter a single number to determine which column to place your marker
 
 If you have hit a mine, your marker will display a , if not your marker will display an X
+
+If you hit all the mines,  the game will end, you have. Or if you chooose all the spaces without a mine, you win!
     """)
     #Board that the user should not see
     board = [[0,0,0,0,0], 
@@ -24,11 +28,12 @@ If you have hit a mine, your marker will display a , if not your marker will dis
 
 
 #Board that the user should see
-    user_board = [[-1,-1,-1,-1,-1],
-        [-1,-1,-1,-1,-1],
-        [-1,-1,-1,-1,-1],
-        [-1,-1,-1,-1,-1],
-        [-1,-1,-1,-1,-1]]
+    user_board = [[1,2,3,4,5],
+        [2,-1,-1,-1,-1,-1],
+        [3,-1,-1,-1,-1,-1],
+        [4,-1,-1,-1,-1,-1],
+        [5,-1,-1,-1,-1,-1],
+        [6,-1,-1,-1,-1,-1]]
 
 
 # while mines is not int or len(mines) > 10 or len(mines) < 1 please repeat input
@@ -48,8 +53,8 @@ If you have hit a mine, your marker will display a , if not your marker will dis
         print("Use ONLY one number from 1 - 10")
 
     def display_board():
-        for row in range(0,5):
-            for col in range(0,5):
+        for row in range(0,6):
+            for col in range(0,6):
                 if col ==4:
                     print(board[row][col])
                 else:
@@ -151,7 +156,7 @@ If you have hit a mine, your marker will display a , if not your marker will dis
 
 #ends the game if the user has guessed all spaces and not hit a mine.
     def game_win():
-        if user_placement == 25 - mines:
+        if user_placement == 25 - [mines]:
             print("You have completed the game without hitting all the mines. You Win! Congratulations")
             return True
         else:
