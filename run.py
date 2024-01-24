@@ -129,7 +129,6 @@ If you hit all the mines,  the game will end, you have. Or if you chooose all th
             
     
     while num_mines_hit < mines:
-        display_user_board()
         col = int(input_col())
         row = int(input_row())
 
