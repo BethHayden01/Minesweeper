@@ -28,12 +28,11 @@ If you hit all the mines,  the game will end, you have. Or if you chooose all th
 
 
 #Board that the user should see
-    user_board = [[1,2,3,4,5],
-        [2,-1,-1,-1,-1,-1],
-        [3,-1,-1,-1,-1,-1],
-        [4,-1,-1,-1,-1,-1],
-        [5,-1,-1,-1,-1,-1],
-        [6,-1,-1,-1,-1,-1]]
+    user_board = [[-1,-1,-1,-1,-1],
+        [-1,-1,-1,-1,-1],
+        [-1,-1,-1,-1,-1],
+        [-1,-1,-1,-1,-1],
+        [-1,-1,-1,-1,-1]]
 
 
 # while mines is not int or len(mines) > 10 or len(mines) < 1 please repeat input
@@ -64,9 +63,9 @@ If you hit all the mines,  the game will end, you have. Or if you chooose all th
 
     def display_user_board():
         print("-"*21)
-        for row in range(0,5):
+        for row in range(1,5):
             print("| ", end = "")
-            for col in range (0,5):
+            for col in range (1,5):
                 if user_board[row][col] == -1:
                     print(" ",  end = " | ")
                 else:
