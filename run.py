@@ -9,15 +9,21 @@ Welcome to Minesweeper! Hit enter to start
 
 Instructions:
 
-When prompted, enter a single number to determine which row to place
+When prompted, enter a single number, from 0 to 5, 
+to determine which row to place
 your marker.
 
 
-When prompted, enter a single number to determine which column to place your marker
+When prompted, enter a single number, from 0 to 5, 
+to determine which column to place your marker
 
-If you have hit a mine, your marker will display a , if not your marker will display an X
+If you have hit a mine, your grid will display 
+a M in the space you have chosen. 
+If you have not hit a mine, the grid will display an X
+in your chosen space.
 
-If you hit all the mines,  the game will end, you have. Or if you chooose all the spaces without a mine, you win!
+If you hit all the mines,  the game will end, you have. 
+Or if you chooose all the spaces without a mine, you win!
     """)
     #Board that the user should not see
     board = [[0,0,0,0,0], 
@@ -84,11 +90,11 @@ If you hit all the mines,  the game will end, you have. Or if you chooose all th
             Input must be a single number ONLY.
             """)
             col_str = input("Enter number for desired column position:")
-            if (col_str, str) and len(col_str) == 1:
+            if col_str.isdigit() and int(col_str) in range(0,6):
                 print("Input Valid")
                 return int(col_str)
             else:
-              print("The value is not a number or is not exactly 1 number long. Please try again.")
+              print("That is not a number or is not 1 number long, try again.")
 
 
     def input_row():
@@ -106,7 +112,7 @@ If you hit all the mines,  the game will end, you have. Or if you chooose all th
                 return int(row_int)
             else:
               print(len(row_int))
-              print("The value is not a number or is not exactly 1 letter long. Please try again.")
+              print("That is not a number or is not 1 number long, try again.")
 
 #places user guess and checks if the user has already guessed the cell 
 
