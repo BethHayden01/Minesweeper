@@ -52,8 +52,8 @@ If you hit all the mines,  the game will end, you have. Or if you chooose all th
         print("Use ONLY one number from 1 - 10")
 
     def display_board():
-        for row in range(0,6):
-            for col in range(0,6):
+        for row in range(0,5):
+            for col in range(0,5):
                 if col ==4:
                     print(board[row][col])
                 else:
@@ -63,9 +63,9 @@ If you hit all the mines,  the game will end, you have. Or if you chooose all th
 
     def display_user_board():
         print("-"*21)
-        for row in range(1,5):
+        for row in range(0,5):
             print("| ", end = "")
-            for col in range (1,5):
+            for col in range (0,5):
                 if user_board[row][col] == -1:
                     print(" ",  end = " | ")
                 else:
@@ -166,3 +166,8 @@ If you hit all the mines,  the game will end, you have. Or if you chooose all th
 
 
 main()
+
+#label = list('12345')
+        #for [row][col] in range(0,5):
+            #print(label[i], end = " ")
+            #print('\n')
