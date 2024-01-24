@@ -27,7 +27,7 @@ in your chosen space.
 If you hit all the mines,  the game will end, you have. 
 Or if you chooose all the spaces without a mine, you win!
     """)
-    #Board that the user should not see
+#Board that the user should not see
     board = [[0,0,0,0,0], 
         [0,0,0,0,0],
         [0,0,0,0,0],
@@ -56,17 +56,20 @@ Or if you chooose all the spaces without a mine, you win!
             if board[row][col]==0:
                 board[row][col]=1
                 num=num+1
+            def display_board():
+                for row in range(0,5):
+                    for col in range(0,5):
+                        if col ==4:
+                            print(board[row][col])
+                        else:
+                            print(board[row][col], end = " ")
+            print('\n')
+            print(display_board)
     except ValueError:
         print("Use ONLY one number from 1 - 10")
 
-    def display_board():
-        for row in range(0,5):
-            for col in range(0,5):
-                if col ==4:
-                    print(board[row][col])
-                else:
-                    print(board[row][col], end = " ")
-        print('\n')
+    
+        
 
 
     def display_user_board():
@@ -92,29 +95,43 @@ Or if you chooose all the spaces without a mine, you win!
             Input must be a single number ONLY.
             """)
             col_str = input("Enter number for desired column position:")
-            if col_str.isdigit() and int(col_str) in range(0,6):
+            if col_str.isdigit() and int(col_str) in range(1,6):
                 print("Input Valid")
-                return int(col_str)
+                return int(col_str)-1
             else:
-              print("That is not a number or is not 1 number long, try again.")
+                print("That is not a number or is not 1 number long, try again.")
 
 
     def input_row():
-        """ User enter row value"""
-        while True: 
+        """ User enter column value"""
+        while True:
             print(f"""
-                Next, choose which row you wish to place your mark.
-                Count down the grid and input that number. 
-                Input must be a single number ONLY. 
-                """)
-            row_int = input("Enter number for desired row postion:")
-
-            if isinstance(row_int, str) and len(row_int) == 1:
-                print("Value accepted")
-                return int(row_int)
+            Choose which column to place your mark.
+            Input must be a single number ONLY.
+            """)
+            col_str = input("Enter number for desired ROW position:")
+            if col_str.isdigit() and int(col_str) in range(1,6):
+                print("Input Valid")
+                return int(col_str)-1
             else:
-              print(len(row_int))
-              print("That is not a number or is not 1 number long, try again.")
+                print("That is not a number or is not 1 number long, try again.")
+
+    # def input_row():
+    #     """ User enter row value"""
+    #     while True: 
+    #         print(f"""
+    #             Next, choose which row you wish to place your mark.
+    #             Count down the grid and input that number. 
+    #             Input must be a single number ONLY. 
+    #             """)
+    #         row_int = input("Enter number for desired row postion:")
+
+    #         if isinstance(row_int, str) and len(row_int) == 1 and int(row_int) >= 0 and int(row_int) <5 :
+    #             print("Value accepted")
+    #             return int(row_int)
+    #         else:
+    #           print(len(row_int))
+    #           print("That is not a number or is not 1 number long, try again.")
 
 #places user guess and checks if the user has already guessed the cell 
 
