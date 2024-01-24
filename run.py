@@ -5,20 +5,22 @@ import os
 def main():
     """ Welcome message displayed to the user """
     print(f"""
-Welcome to Minesweeper! Hit enter to start
+Welcome to Minesweeper!
 
 Instructions:
+
+To begin, enter your desired number of single cell mines.
 
 When prompted, enter a single number, from 0 to 5, 
 to determine which row to place
 your marker.
-
 
 When prompted, enter a single number, from 0 to 5, 
 to determine which column to place your marker
 
 If you have hit a mine, your grid will display 
 a M in the space you have chosen. 
+
 If you have not hit a mine, the grid will display an X
 in your chosen space.
 
