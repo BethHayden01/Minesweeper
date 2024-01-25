@@ -121,20 +121,8 @@ Or if you chooose all the spaces without a mine, you win!
         col = input_col()
         row = input_row()
         print(user_board[row][col])
-        if user_board[row][col] == 'X' or user_board[row][col] == 'M':
-            print(user_board[row])
-            print("You have already hit this space, try again.")
-        elif user_board[row][col] == 1:
-            user_board[row][col] = 'M'
-            print("You have hit a mine! Line 117")
-            num_mines_hit += 1
-        else:
-            user_board[row][col] = 'X'
-            print("You did not hit a mine! Congratulations")
-        if game_win():
-            return
-            
-    
+        
+
     while num_mines_hit < mines:
         col = int(input_col())
         row = int(input_row())
@@ -144,34 +132,14 @@ Or if you chooose all the spaces without a mine, you win!
         else:
             if user_board[row][col] == 1:
                 user_board[row][col] = 'M'
-                print ("You have hit a mine! Line 143")
+                print ("You have hit a mine! GAME OVER")
                 num_mines_hit += 1
             else:
                 user_board[row][col] = 'X'
-                print("You did not hit a mine! Congratulations")
+                print("You did not hit a mine! Input next guess.")
 
         display_user_board()
 
-#ends game if user has hit all mines
-    def game_over():
-        if num_mines_hit == mines: 
-            print("GAME OVER! You have hit all the mines")
-            return True
-        else:
-            return False
-
-#ends the game if the user has guessed all spaces and not hit a mine.
-    def game_win():
-        global num_mines_hit
-        for row in range(0,5):
-            for col in range(0,5):
-                if user_board[row][col] == '':
-                    num_mines_hit +=1
-        if num_mines_hit == mines:
-            print("Congrats")
-            return True
-        else:
-            return False
 
     user_placement()
     game_over()
@@ -179,3 +147,13 @@ Or if you chooose all the spaces without a mine, you win!
 
 
 main()
+
+#ends the game if the user has guessed all spaces and not hit a mine.
+    #def game_win():
+     #   if num_mines_hit == 0 and user_placement == 25 - mines:
+      #      print ("congratulations!")
+       #     return True
+        #else:
+         #   user_placement == 'M'
+          #  print ("You have hit a mine! GAME OVER")
+           # return False
