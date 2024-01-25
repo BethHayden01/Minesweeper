@@ -2,8 +2,6 @@ import random
 import os
 
 
-
-
 def main():
     """ Welcome message displayed to the user """
     print(f"""
@@ -121,7 +119,7 @@ Or if you chooose all the spaces without a mine, you win!
         col = input_col()
         row = input_row()
         print(user_board[row][col])
-        
+      
 
     while num_mines_hit < mines:
         col = int(input_col())
@@ -133,17 +131,16 @@ Or if you chooose all the spaces without a mine, you win!
             if user_board[row][col] == 1:
                 user_board[row][col] = 'M'
                 print ("You have hit a mine! GAME OVER")
-                num_mines_hit += 1
+                return True
             else:
                 user_board[row][col] = 'X'
                 print("You did not hit a mine! Input next guess.")
+                return False
 
         display_user_board()
 
 
     user_placement()
-    game_over()
-    game_win()
 
 
 main()
