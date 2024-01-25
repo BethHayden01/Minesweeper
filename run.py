@@ -119,8 +119,9 @@ Or if you chooose all the spaces without a mine, you win!
         col = input_col()
         row = input_row()
         print(user_board[row][col])
+        
+        game_win = none
       
-
     while num_mines_hit < mines:
         col = int(input_col())
         row = int(input_row())
@@ -131,15 +132,16 @@ Or if you chooose all the spaces without a mine, you win!
             if user_board[row][col] == 1:
                 user_board[row][col] = 'M'
                 print ("You have hit a mine! GAME OVER")
-                return True
+                game_win = False
+                break
             else:
                 user_board[row][col] = 'X'
                 print("You did not hit a mine! Input next guess.")
-                return False
+                game_win = True
 
         display_user_board()
 
-
+    return game_win
     user_placement()
 
 
