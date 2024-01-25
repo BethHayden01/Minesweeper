@@ -11,69 +11,65 @@ Instructions:
 
 To begin, enter your desired number of single cell mines.
 
-When prompted, enter a single number, from 0 to 5, 
+
+When prompted, enter a single number, from 0 to 5,
+to determine which column to place your marker. 
+Columns are numbered 1-5 horizontally.
+
+
+When prompted, enter a single number, from 0 to 5,
 to determine which row to place
-your marker.
+your marker. Rows are numbered 1-5 vertically.
 
-When prompted, enter a single number, from 0 to 5, 
-to determine which column to place your marker
 
-If you have hit a mine, your grid will display 
-a M in the space you have chosen. 
+If you have hit a mine, your grid will display
+a M in the space you have chosen and it is GAME OVER.
+
 
 If you have not hit a mine, the grid will display an X
 in your chosen space.
 
-If you hit all the mines,  the game will end, you have. 
-Or if you chooose all the spaces without a mine, you win!
+Happy Gaming!
+
     """)
 #Board that the user should not see
-    board = [[0,0,0,0,0], 
-        [0,0,0,0,0],
-        [0,0,0,0,0],
-        [0,0,0,0,0],
-        [0,0,0,0,0]]
+    board = [[0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]]
 
 
 #Board that the user should see
-    user_board = [[-1,-1,-1,-1,-1],
-        [-1,-1,-1,-1,-1],
-        [-1,-1,-1,-1,-1],
-        [-1,-1,-1,-1,-1],
-        [-1,-1,-1,-1,-1]]
+    user_board = [[-1, -1, -1, -1, -1],
+        [-1, -1, -1, -1, -1],
+        [-1, -1, -1, -1, -1],
+        [-1, -1, -1, -1, -1],
+        [-1, -1, -1, -1, -1]]
 
 
 # while mines is not int or len(mines) > 10 or len(mines) < 1 please repeat input
     mines = input("Enter the number of mines you desire: ")
     if len(mines) > 10 or len(mines) < 1:
-        print("Use one number from 1 - 10")
+        print("Use only one number from 1 - 10")
     try :
         mines = int(mines)
         num=0
         while num < mines:
-            row=random.randint(0,4)
-            col=random.randint(0,4)
-            if user_board[row][col]==-1:
-                user_board[row][col]=1
-                num=num+1
-            def display_board():
-                for row in range(0,5):
-                    for col in range(0,5):
-                        if col ==4:
-                            print(board[row][col])
-                        else:
-                            print(board[row][col], end = " ")
-                print('\n')
-                print(display_board)
+            row = random.randint(0, 4)
+            col = random.randint(0, 4)
+            if user_board[row][col] == -1:
+                user_board[row][col] = 1
+                num = num + 1
     except ValueError:
         print("Use ONLY one number from 1 - 10")
 
 
     def display_user_board():
         print("-"*21)
-        for row in range(0,5):
+        for row in range(0, 5):
             print("| ", end = "")
-            for col in range (0,5):
+            for col in range (0, 5):
                 if user_board[row][col] == -1:
                     print(" ",  end = " | ")
                 else:
@@ -92,7 +88,7 @@ Or if you chooose all the spaces without a mine, you win!
             Input must be a single number ONLY.
             """)
             col_str = input("Enter number for desired column position:")
-            if col_str.isdigit() and int(col_str) in range(1,6):
+            if col_str.isdigit() and int(col_str) in range(1, 6):
                 print("Input Valid")
                 return int(col_str)-1
             else:
@@ -107,7 +103,7 @@ Or if you chooose all the spaces without a mine, you win!
             Input must be a single number ONLY between 1 and 5.
             """)
             row_int = input("Enter number for desired row position:")
-            if row_int.isdigit() and int(row_int) in range(1,6):
+            if row_int.isdigit() and int(row_int) in range(1, 6):
                 print("Input Valid")
                 return int(row_int)-1
             else:
@@ -131,7 +127,7 @@ Or if you chooose all the spaces without a mine, you win!
         else:
             if user_board[row][col] == 1:
                 user_board[row][col] = 'M'
-                print ("You have hit a mine! GAME OVER")
+                print("You have hit a mine! GAME OVER")
                 game_win = False
                 break
             else:
@@ -146,13 +142,3 @@ Or if you chooose all the spaces without a mine, you win!
 
 
 main()
-
-#ends the game if the user has guessed all spaces and not hit a mine.
-    #def game_win():
-     #   if num_mines_hit == 0 and user_placement == 25 - mines:
-      #      print ("congratulations!")
-       #     return True
-        #else:
-         #   user_placement == 'M'
-          #  print ("You have hit a mine! GAME OVER")
-           # return False
