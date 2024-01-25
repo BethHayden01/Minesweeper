@@ -32,15 +32,8 @@ in your chosen space.
 Happy Gaming!
 
     """)
-#Board that the user should not see
-    board = [[0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0]]
 
 
-#Board that the user should see
     user_board = [[-1, -1, -1, -1, -1],
         [-1, -1, -1, -1, -1],
         [-1, -1, -1, -1, -1],
@@ -50,7 +43,7 @@ Happy Gaming!
 
 # while mines is not int or len(mines) > 10 or len(mines) < 1 please repeat input
     mines = input("Enter the number of mines you desire: ")
-    if len(mines) > 10 or len(mines) < 1:
+    if mines.isdigit() and int(mines) in range (1, 10):
         print("Use only one number from 1 - 10")
     try :
         mines = int(mines)
@@ -118,11 +111,12 @@ Happy Gaming!
         
         game_win = none
       
+    mines = int(mines)
     while num_mines_hit < mines:
         col = int(input_col())
         row = int(input_row())
 
-        if user_board[row][col] == 'X' or board[row][col] == 'M':
+        if user_board[row][col] == 'X' or user_board[row][col] == 'M':
             print("You have already hit this space, try again.")
         else:
             if user_board[row][col] == 1:
@@ -142,3 +136,6 @@ Happy Gaming!
 
 
 main()
+
+#elif user_board[user_placement][mines] == 25:
+                #print("YOU WON!! Congratulations! Thanks for playing")
