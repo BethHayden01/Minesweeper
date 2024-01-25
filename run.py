@@ -43,19 +43,25 @@ Happy Gaming!
 
 # while mines is not int or len(mines) > 10 or len(mines) < 1 please repeat input
     mines = input("Enter the number of mines you desire: ")
-    if mines.isdigit() and int(mines) in range (1, 10):
-        print("Use only one number from 1 - 10")
-    try :
+    if mines.isdigit() and int(mines) in range (1, 11):
+        print("Input valid.")
         mines = int(mines)
-        num=0
-        while num < mines:
-            row = random.randint(0, 4)
-            col = random.randint(0, 4)
-            if user_board[row][col] == -1:
-                user_board[row][col] = 1
-                num = num + 1
-    except ValueError:
-        print("Use ONLY one number from 1 - 10")
+    else:
+        print("That is not one number from 1 - 10. Try again.")
+        while not mines.isdigit() or not int(mines) in range (1, 11):
+            mines = input("Enter the number of mines you desire: ")
+            if mines.isdigit() and int(mines) in range (1, 11):
+                print("Input Valid.")
+                mines = int(mines)
+                break
+    
+    num=0
+    while num < mines:
+        row = random.randint(0, 4)
+        col = random.randint(0, 4)
+        if user_board[row][col] == -1:
+            user_board[row][col] = 1
+            num = num + 1
 
 
     def display_user_board():
