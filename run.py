@@ -55,6 +55,36 @@ Happy Gaming!
                 mines = int(mines)
                 break
     
+
+    # def display_user_board():
+    #     print("-"*21)
+    #     for row in range(0, 5):
+    #         print("| ", end = "")
+    #         for col in range (0, 5):
+    #             if user_board[row][col] == -1:
+    #                 print(" ",  end = " | ")
+    #             else:
+    #                 print(user_board[row][col], end = " | ")
+    #         print("")
+    #         print("-"*21)
+
+    def display_user_board():
+        print("-" * 21)
+        for row in range(0, 5):
+            print("| ", end="")
+            for col in range(0, 5):
+                if user_board[row][col] == -1:
+                    print(" ", end=" | ")
+                elif user_board[row][col] == 'X' or user_board[row][col] == 'M':
+                    print(user_board[row][col], end=" | ")
+                else:
+                    print(" ", end=" | ")
+            print("")
+            print("-" * 21)
+    display_user_board()
+    num_mines_hit = 0
+
+
     num=0
     while num < mines:
         row = random.randint(0, 4)
@@ -62,21 +92,6 @@ Happy Gaming!
         if user_board[row][col] == -1:
             user_board[row][col] = 1
             num = num + 1
-
-
-    def display_user_board():
-        print("-"*21)
-        for row in range(0, 5):
-            print("| ", end = "")
-            for col in range (0, 5):
-                if user_board[row][col] == -1:
-                    print(" ",  end = " | ")
-                else:
-                    print(user_board[row][col], end = " | ")
-            print("")
-            print("-"*21)
-    display_user_board()
-    num_mines_hit = 0
 
 
     def input_col():
@@ -113,10 +128,9 @@ Happy Gaming!
         nonlocal num_mines_hit
         col = input_col()
         row = input_row()
-        print(user_board[row][col])
         
-        game_win = none
-      
+        game_win = None
+
     mines = int(mines)
     while num_mines_hit < mines:
         col = int(input_col())
@@ -128,6 +142,11 @@ Happy Gaming!
             if user_board[row][col] == 1:
                 user_board[row][col] = 'M'
                 print("You have hit a mine! GAME OVER")
+                game_win = False
+                display_user_board()
+                break
+            elif user_board[row][col] == (25 - num_mines_hit):
+                print("YOU WON!! Congratulations! Thanks for playing")
                 game_win = False
                 break
             else:
@@ -143,5 +162,3 @@ Happy Gaming!
 
 main()
 
-#elif user_board[user_placement][mines] == 25:
-                #print("YOU WON!! Congratulations! Thanks for playing")
