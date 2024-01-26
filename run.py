@@ -13,7 +13,7 @@ To begin, enter your desired number of single cell mines.
 
 
 When prompted, enter a single number, from 0 to 5,
-to determine which column to place your marker. 
+to determine which column to place your marker.
 Columns are numbered 1-5 horizontally.
 
 
@@ -35,38 +35,25 @@ Happy Gaming!
 
 
     user_board = [[-1, -1, -1, -1, -1],
-        [-1, -1, -1, -1, -1],
-        [-1, -1, -1, -1, -1],
-        [-1, -1, -1, -1, -1],
-        [-1, -1, -1, -1, -1]]
+                  [-1, -1, -1, -1, -1],
+                  [-1, -1, -1, -1, -1],
+                  [-1, -1, -1, -1, -1],
+                  [-1, -1, -1, -1, -1]]
 
 
-# while mines is not int or len(mines) > 10 or len(mines) < 1 please repeat input
     mines = input("Enter the number of mines you desire: ")
-    if mines.isdigit() and int(mines) in range (1, 11):
+    if mines.isdigit() and int(mines) in range(1, 11):
         print("Input valid.")
         mines = int(mines)
     else:
         print("That is not one number from 1 - 10. Try again.")
-        while not mines.isdigit() or not int(mines) in range (1, 11):
+        while not mines.isdigit() or not int(mines) in range(1, 11):
             mines = input("Enter the number of mines you desire: ")
-            if mines.isdigit() and int(mines) in range (1, 11):
+            if mines.isdigit() and int(mines) in range(1, 11):
                 print("Input Valid.")
                 mines = int(mines)
                 break
-    
 
-    # def display_user_board():
-    #     print("-"*21)
-    #     for row in range(0, 5):
-    #         print("| ", end = "")
-    #         for col in range (0, 5):
-    #             if user_board[row][col] == -1:
-    #                 print(" ",  end = " | ")
-    #             else:
-    #                 print(user_board[row][col], end = " | ")
-    #         print("")
-    #         print("-"*21)
 
     def display_user_board():
         print("-" * 21)
@@ -75,7 +62,8 @@ Happy Gaming!
             for col in range(0, 5):
                 if user_board[row][col] == -1:
                     print(" ", end=" | ")
-                elif user_board[row][col] == 'X' or user_board[row][col] == 'M':
+                elif (user_board[row][col] == 'X' or
+                      user_board[row][col] == 'M'):
                     print(user_board[row][col], end=" | ")
                 else:
                     print(" ", end=" | ")
@@ -85,7 +73,7 @@ Happy Gaming!
     num_mines_hit = 0
 
 
-    num=0
+    num = 0
     while num < mines:
         row = random.randint(0, 4)
         col = random.randint(0, 4)
@@ -106,7 +94,7 @@ Happy Gaming!
                 print("Input Valid")
                 return int(col_str)-1
             else:
-                print("That is not a number or is not 1 number long, try again.")
+                print("That is not a number or is not 1 number, try again.")
 
 
     def input_row():
@@ -121,21 +109,19 @@ Happy Gaming!
                 print("Input Valid")
                 return int(row_int)-1
             else:
-                print("That is not a number or is not 1 number long, try again.")
+                print("That is not a number or is not 1 number, try again.")
 
 
     def user_placement():
         nonlocal num_mines_hit
         col = input_col()
         row = input_row()
-        
         game_win = None
 
     mines = int(mines)
     while num_mines_hit < mines:
         col = int(input_col())
         row = int(input_row())
-
         if user_board[row][col] == 'X' or user_board[row][col] == 'M':
             print("You have already hit this space, try again.")
         else:
@@ -144,10 +130,6 @@ Happy Gaming!
                 print("You have hit a mine! GAME OVER")
                 game_win = False
                 display_user_board()
-                break
-            elif user_board[row][col] == (25 - num_mines_hit):
-                print("YOU WON!! Congratulations! Thanks for playing")
-                game_win = False
                 break
             else:
                 user_board[row][col] = 'X'
@@ -161,4 +143,3 @@ Happy Gaming!
 
 
 main()
-
