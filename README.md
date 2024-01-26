@@ -1,5 +1,7 @@
 # MineSweeper Game
 
+![Terminal Image](documentation/terminal.png)
+
 *The link to [Minesweeper](https://minesweeper-4f4b.onrender.com/)
 
 This Minesweeper game, coded in Python, creates a terminal in which users can interact to initiate and complete a game of Minesweeper. 
@@ -32,32 +34,19 @@ The rules of the game are displayed upon inititation to provide the user with a 
 
 ## Features
 
-Upon start up of the game the user is met with a welcome messsage followed by the instructions and rules of the game as seen below:
-(Screenshot of the start window)
-
-Next the user is met with a message asking how many mines they wish the spawn onto the board.
-(Screenshot)
-
-After this the user is able to view the board.
-(screenshot)
-
-The user is then able to choose which column they wish to place their mine.
-(screenshot)
-
-Following this, the user can enter the row in which they wish to place this mine. 
-(Screenshot)
-
-The user can then see on the board if their placement has hit a mine or not through the feedback of an X for no hit or a * for a hit.
-(Screenshot)
-
-If the user has not hit a mine the game shall loop until either the game is complete and they have no more grid placements to choose, or all of the mines have been hit. 
-Once this occurs, the user will be displayed with either a 'Game over' message following contact with all mines, or a 'congratulations' message if the cells have all been selected with no mine hits. 
-(Screenshot)
+1. Upon start up of the game the user is met with a welcome messsage followed by the instructions and rules of the game.
+2. Next the user is met with a message asking how many mines they wish the spawn onto the board.
+3. After this the user is able to view the board.
+4. The user is then able to choose which column they wish to place their mine.
+5. Following this, the user can enter the row in which they wish to place this mine. 
+6. The user can then see on the board if their placement has hit a mine or not through the feedback of an X for no hit or a M for a hit.
+7. If the user has not hit a mine the game shall loop until they do. 
+8. the user shall be told 'GAME OVER' once they have hit a mine.
 
 ## Flowchart
 
 The below flowchart outlines the logic algorithm of the game and how to continues until the end.
-(Screenshot)
+![Flowchart](documentation/flowchart.png)
 
 ## Technologies used
 
@@ -83,18 +72,29 @@ Throughout the creation of this game many bugs were encountered.
 
 solved bugs: 
 1. The first solved bug was a break in the flow of the code. The code did not run past the user column input. 
-(Screenshot of broken code)
+
+![Bug 1](documentation/bug1.png)
+
 This was fixed by the addition of a break after the column input while loop.
-(Screenshot)
+
+![Bug 1 solution](documentation/bug1_fix.png)
 
 2. The code used to detect if a mine had been hit only responded to integer inputs and therefore produced the following error message. 
-(Screenshot)
-This was fixed by altering the structure of my column input to request an integar rather than a string. 
+
+![Bug 2 error message](documentation/bug2.png)
+
+![Bug 2 fix](documentation/bug2_code.png)
+
+This was fixed by altering the structure of my column input to request an integer rather than a string. 
 
 3. Another bug that occured during the creation of my project was in realtion to mine generation. After initial user mine input and the first column+row selection, the program displayed the location of the mines to the user. 
-(Screenshot)
-This was fixed by expanding the elif statement within the display_user_board function to only print 'X' or 'M' on the board and not the 1 representing a mine.
-(Screenshot)
+
+This was fixed by expanding the elif statement within the display_user_board function to only print 'X' or 'M' on the board and not the 1 representing a mine and adding a display_user_board() to the user_placement function.
+
+![Bug 3 display_user_board fix](documentation/bug3_display.png)
+
+![Bug 3 placement fix](documentation/bug3.png)
+
 
 ## Unsolved bugs
 
